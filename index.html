@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <!-- >
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!-->
+
+    <title>Code Quiz</title>
+  </head>
+
+  <body class="bg-info">
+      <div> 
+        <header class="bg-light m-2 p-2"> 
+          <a href="leaderboard.html" class="header-font">View Leaderboard</a>
+          <a id="clock" class="float-right header-font"> Remaining Time: 0</a>
+         </header>
+
+         <Section class="m-2 p-2 container" id="instructions">
+           <div class="row">
+             <div class="col-lg-12 col-xs-12">
+              <a class=header-font> You have two minutes to answer the following 5 questions on JavaScript.</a> 
+           </div>
+            </div>
+        <div class="row"> 
+          <div class="col-lg-12 col-xs-12">
+          <a class="header-font"> <strong class="header-font"> Please Be Aware:</strong> If you answer a question incorrectly, you will lose 15 seconds from your remaining time.</a>
+        </div>
+        </div>
+          </Section>
+        
+          <!--Start Button-->
+          <div class="m-2 p-2 row">
+            <button type="button" class="btn btn-secondary header-font start-button" id="startButton"> Start Quiz</button>
+          </div>
+          </div>
+
+          <!--Question section with answers - This will change with each new question being asked-->
+          <div class="questionAnswer container" id="questionsBlock">
+            <div class="questionTop header-font bg-white col-lg-6 m-5" id="questionTop">
+            </div> 
+            <ul id="answers">
+            <li class="answerChoice">A) </li>
+            <li class="answerChoice">B) </li>
+            <li class="answerChoice">C) </li>
+            <li class="answerChoice">D) </li>
+        </ul>
+        <p class="feedback"></p>
+        </div>
+
+    <!--Link to JavaScript file-->
+    <script type="text/javascript" src="./script.js">
+    </script>
+  </body>
+</html>

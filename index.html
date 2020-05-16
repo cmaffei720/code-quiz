@@ -39,17 +39,38 @@
           </div>
 
           <!--Question section with answers - This will change with each new question being asked-->
-          <div class="questionAnswer container" id="questionsBlock">
-            <div class="questionTop header-font bg-white col-lg-6 m-5" id="questionTop">
+          <div class="questionAnswer container d-none" id="questionsBlock">
+            <div class="questionTop header-font bg-white col-lg-6" id="questionTop">
             </div> 
-            <ul id="answers">
+            <div class="row"> 
+              <div class="col-lg-6">
+            <ul id="answers" class="m-2">
               <li class="key"> </li>
               <li class="key"> </li>
               <li class="key"> </li>
               <li class="key"> </li>
             </ul>
-        <a id="result"></a>
+          </div>
         </div>
+            <div class="row">
+              <div class="col-lg-6 m-1">
+        <a id="result"></a>
+      </div> 
+    </div>
+        </div>
+
+    <!--Submit screen, once quiz is finished-->
+    <div class="container d-none" id="Submit">
+      <div class="row m-5">
+          <div class="col-lg-12 col-xs-12">
+              <h2>You are finished!</h2>
+              <p id="finalScore"> </p>
+                  <label for="new-score">Name </label>
+                  <input type="text" id="name"> 
+                  <button type="button" class="btn btn-info submitBtn" id="submitButton"> Submit</button>
+          </div>
+      </div>
+  </div>
 
     <!--Link to JavaScript file-->
     <script type="text/javascript" src="./script.js">

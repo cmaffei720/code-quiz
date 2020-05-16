@@ -34,16 +34,19 @@ var answer = document.querySelector("#answers")
 var questionText = document.getElementById("questionTop")
 var result = document.querySelector("#result")
 var userScore = 0
+var submit = document.querySelector("#Submit")
+var finalScore = document.querySelector("#finalScore")
+var questionsBlock = document.querySelector("#questionsBlock")
 
 
-//function to start timer, clear welcome message and start button
+//function to start timer, clear welcome message and start button text
 function startClock() {
     var instructionsClear = document.querySelector("#instructions")
     instructionsClear.textContent = ""
     document.body.appendChild(instructionsClear)
-    var buttonClear = document.querySelector("#startButton")
-    buttonClear.textContent = ""
-    document.body.appendChild(buttonClear)
+    start.textContent = ""
+    document.body.appendChild(start)
+    questionsBlock.setAttribute("class", "d-inline")
     setTimer()
     nextQuestion()
 }
@@ -56,35 +59,42 @@ function setTimer() {
 
         if (timerClock === 0){
             clearInterval(countdownTime)
+            finalScore.textContent = "Your score is " + timerClock
+            submit.setAttribute("class", "d-inline")
+            questionsBlock.setAttribute("class", "d-none")
         }
         else if (questionCount === questions.length){
             clearInterval(countdownTime)
+            finalScore.textContent = "Your score is " + timerClock
+            submit.setAttribute("class", "d-inline")
+            questionsBlock.setAttribute("class", "d-none")
         }
     }, 1000)
 }
 
 //function to set correct answer, pull question into Text, create answer buttons, increase questionCount by 1
 function nextQuestion() {
-    questionCount++
+    questionCount = questionCount + 1
     questionText.textContent = questions[questionCount].ask
     answer.innerHTML=""
     var options = questions[questionCount].key
     for (var i = 0; i<options.length; i++) {
         var newKey = document.createElement("button")
         newKey.textContent = options[i]
-        answerButton = answer.appendChild(newKey)
+        answer.appendChild(newKey)
+        newKey.setAttribute("class", "btn-block")
     }
   
 }
 
 //event listener onto answer choice buttons
 answer.addEventListener("click", function(event){
-
-    if (questions[questionCount].correct === event.target.textContent) {
+    if (event.target.textContent === questions[questionCount].correct) {
         result.textContent = "That is correct!"
+        userScore++
     }
     else {
-        result.textContent = "Not correct"
+        result.textContent = "That is not correct"
         timerClock = timerClock - 15
     }
     nextQuestion()

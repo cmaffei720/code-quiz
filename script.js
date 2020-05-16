@@ -33,10 +33,11 @@ var quizClock = document.querySelector("#clock")
 var answer = document.querySelector("#answers")
 var questionText = document.getElementById("questionTop")
 var result = document.querySelector("#result")
-var userScore = 0
 var submit = document.querySelector("#Submit")
+var submitButton = document.querySelector("#submitButton")
 var finalScore = document.querySelector("#finalScore")
 var questionsBlock = document.querySelector("#questionsBlock")
+var newScoreName = document.querySelector("#name")
 
 
 //function to start timer, clear welcome message and start button text
@@ -62,12 +63,19 @@ function setTimer() {
             finalScore.textContent = "Your score is " + timerClock
             submit.setAttribute("class", "d-inline")
             questionsBlock.setAttribute("class", "d-none")
+            var finalScoreTotal = timerClock
+            console.log(finalScoreTotal)
+            console.log(newScoreName)
         }
         else if (questionCount === questions.length){
             clearInterval(countdownTime)
             finalScore.textContent = "Your score is " + timerClock
             submit.setAttribute("class", "d-inline")
             questionsBlock.setAttribute("class", "d-none")
+            var finalScoreTotal = timerClock
+            console.log(finalScoreTotal)
+            console.log(newScoreName)
+            
         }
     }, 1000)
 }
@@ -91,7 +99,6 @@ function nextQuestion() {
 answer.addEventListener("click", function(event){
     if (event.target.textContent === questions[questionCount].correct) {
         result.textContent = "That is correct!"
-        userScore++
     }
     else {
         result.textContent = "That is not correct"
@@ -104,4 +111,15 @@ answer.addEventListener("click", function(event){
 start.addEventListener("click", startClock)
 start.addEventListener("click", nextQuestion)
 
-console.log(userScore)
+//create variables for name and score for completed quiz
+//store in local storage
+submitButton.addEventListener("click", function(event){
+    event.preventDefault()
+    user = document.getElementById("name").value
+    var userName = user
+    var score = timerClock
+    console.log(userName)
+    console.log(score)
+    localStorage.setItem("userName", userName)
+    localStorage.setItem("score", score)
+})

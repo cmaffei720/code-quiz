@@ -27,7 +27,7 @@ var questions = [
     }
 ]
 var timerClock = 120
-var questionCount = -2
+var questionCount = -1
 var start = document.querySelector("#startButton")
 var quizClock = document.querySelector("#clock")
 var answer = document.querySelector("#answers")
@@ -49,7 +49,7 @@ function startClock() {
     document.body.appendChild(start)
     questionsBlock.setAttribute("class", "d-inline")
     setTimer()
-    nextQuestion()
+
 }
 
 //set timer function
@@ -111,15 +111,16 @@ answer.addEventListener("click", function(event){
 start.addEventListener("click", startClock)
 start.addEventListener("click", nextQuestion)
 
+var id = +localStorage.getItem("id")
+
 //create variables for name and score for completed quiz
 //store in local storage
 submitButton.addEventListener("click", function(event){
     event.preventDefault()
     user = document.getElementById("name").value
-    var userName = user
     var score = timerClock
-    console.log(userName)
-    console.log(score)
-    localStorage.setItem("userName", userName)
-    localStorage.setItem("score", score)
+    localStorage.setItem("id", id + 1)
+    localStorage.setItem("userName"+id, user)
+    localStorage.setItem("score"+id, score)
+    window.location = "leaderboard.html"
 })
